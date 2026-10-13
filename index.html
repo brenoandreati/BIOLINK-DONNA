@@ -29,13 +29,14 @@
   <meta name="twitter:description" content="Conheça a Donna Cerimonial &amp; Eventos, em Glória, Vila Velha — ES. Solicite seu orçamento e planeje uma celebração especial.">
   <meta name="twitter:image" content="assets/img/og-image.jpg">
 
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <link rel="preload" href="assets/fonts/bodoni-moda-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/bodoni-moda-latin-opsz-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/jost-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/logo-donna.webp" as="image" type="image/webp" fetchpriority="high">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script>document.documentElement.classList.add('js');</script>
@@ -71,7 +72,7 @@
 </head>
 <body>
 
-  <!-- Biblioteca de ícones (Lucide, ISC) e ornamentos -->
+  <!-- Biblioteca de ícones (Lucide, ISC) -->
   <svg class="sprite" aria-hidden="true" focusable="false">
     <symbol id="i-whatsapp" viewBox="0 0 24 24">
       <path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>
@@ -117,18 +118,6 @@
       <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
     </symbol>
 
-    <!-- Ornamento clássico: arabescos simétricos com losango central -->
-    <symbol id="o-flourish" viewBox="0 0 240 28">
-      <path d="M120 5.5 126.5 14 120 22.5 113.5 14Z"/>
-      <circle cx="120" cy="14" r="1.4" fill="currentColor" stroke="none"/>
-      <g id="o-flourish-half">
-        <path d="M129.5 14c5 0 7-6.2 12.2-6.2 3.9 0 5 4 2.3 5.1-1.8.7-3.2-.6-2.3-2"/>
-        <path d="M129.5 14c5 0 7 6.2 12.2 6.2 3.9 0 5-4 2.3-5.1-1.8-.7-3.2.6-2.3 2"/>
-        <path d="M149 14h89" stroke-width=".75"/>
-        <circle cx="154" cy="14" r="1.1" fill="currentColor" stroke="none"/>
-      </g>
-      <use href="#o-flourish-half" transform="matrix(-1 0 0 1 240 0)"/>
-    </symbol>
   </svg>
 
   <main id="conteudo">
@@ -139,12 +128,9 @@
 
         <div class="invite frame">
 
-          <!-- Logo original: salve o arquivo em assets/img/logo.png (fundo transparente ou preto). -->
-          <img class="invite__logo" src="assets/img/logo.png" alt="" decoding="async" fetchpriority="high" onerror="this.remove()">
-
+          <!-- Logo original, sem alterações (apenas recortada). A sombra preta do arquivo se funde ao fundo preto. -->
           <h1 class="brand" id="marca">
-            <span class="brand__name">Donna</span>
-            <span class="brand__kind">Cerimonial &amp; Eventos</span>
+            <img class="brand__logo" src="assets/img/logo-donna.webp" alt="Donna Cerimonial &amp; Eventos" width="843" height="432" fetchpriority="high" decoding="async">
           </h1>
 
           <p class="invite__headline">
@@ -329,7 +315,7 @@
     <!-- 5 · CHAMADA FINAL -->
     <section class="closing" aria-labelledby="chamada-titulo">
       <div class="closing__inner frame">
-        <svg class="ornament closing__ornament" viewBox="0 0 240 28" aria-hidden="true" data-reveal><use href="#o-flourish"/></svg>
+        <img class="closing__ornament" src="assets/img/logo-ornamento.webp" alt="" width="827" height="104" loading="lazy" decoding="async" data-reveal>
         <h2 class="closing__title" id="chamada-titulo" data-reveal style="--i:1">Seu próximo grande momento <em>começa aqui.</em></h2>
         <p class="closing__text" data-reveal style="--i:2">Conte-nos sobre o seu sonho. Vamos planejar juntos uma celebração única.</p>
         <div data-reveal style="--i:3">
@@ -347,8 +333,7 @@
 
   <!-- 6 · RODAPÉ -->
   <footer class="footer">
-    <img class="footer__logo" src="assets/img/logo.png" alt="Donna Cerimonial &amp; Eventos" loading="lazy" decoding="async" onerror="this.remove()">
-    <p class="footer__wordmark" aria-hidden="true">Donna <span>Cerimonial &amp; Eventos</span></p>
+    <img class="footer__logo" src="assets/img/logo-donna.webp" alt="Donna Cerimonial &amp; Eventos" width="843" height="432" loading="lazy" decoding="async">
 
     <p class="footer__place">
       <svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>

@@ -1,7 +1,7 @@
 <!doctype html>
 <!--
   Modelo da imagem de compartilhamento (1200 × 630).
-  Para regenerar assets/img/og-image.jpg depois de adicionar a logo:
+  Para regenerar assets/img/og-image.jpg:
     1. sirva a pasta do projeto (ex.: npx serve .)
     2. abra /tools/og-image.html em uma janela de 1200 × 630
     3. capture a tela e salve como JPG em assets/img/og-image.jpg
@@ -17,7 +17,7 @@
     display: grid;
     place-items: center;
     background:
-      radial-gradient(60% 70% at 50% 0%, rgba(212, 175, 55, .12), transparent 70%),
+      radial-gradient(60% 70% at 50% 0%, rgba(212, 175, 55, .10), transparent 70%),
       #050505;
   }
   .og {
@@ -29,21 +29,9 @@
     justify-content: center;
     text-align: center;
   }
-  .og img { height: 150px; width: auto; margin-bottom: 22px; }
-  .og .brand { font-size: 15px; }
-  .og:not(:has(img)) .brand__name {
-    display: block;
-    margin-bottom: 14px;
-    font-family: var(--serif);
-    font-size: 104px;
-    line-height: .95;
-    letter-spacing: 0;
-    text-transform: none;
-  }
-  .og:not(:has(img)) .brand__kind { display: block; font-size: 14px; letter-spacing: .42em; }
-  .og .invite__headline { max-width: 24ch; font-size: 50px; }
-  .og .invite__headline::before { margin: 26px auto; width: 64px; }
-  .og .invite__place { margin-top: 26px; font-size: 14px; }
+  .og img { width: 440px; height: auto; }
+  .og .invite__headline { max-width: 24ch; margin-top: 22px; font-size: 44px; }
+  .og .invite__place { margin-top: 24px; font-size: 14px; }
   .og .invite__place .icon { font-size: 17px; }
   .og, .og * { animation: none !important; }
 </style>
@@ -56,8 +44,7 @@
     </symbol>
   </svg>
   <div class="og frame">
-    <img src="../assets/img/logo.png" alt="" onerror="this.remove()">
-    <p class="brand"><span class="brand__name">Donna</span> <span class="brand__kind">Cerimonial &amp; Eventos</span></p>
+    <img src="../assets/img/logo-donna.webp" alt="Donna Cerimonial &amp; Eventos" width="843" height="432">
     <p class="invite__headline">Não realizamos apenas eventos, <em class="foil">realizamos sonhos.</em></p>
     <p class="invite__place"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg> Glória, Vila Velha — ES</p>
   </div>

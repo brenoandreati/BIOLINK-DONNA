@@ -9,31 +9,34 @@ Pode ser publicado em qualquer hospedagem estática (Netlify, Vercel, GitHub Pag
 ## Estrutura
 
 ```
-index.html                 página completa (seções, links, metadados, ícones SVG)
-assets/css/styles.css      estilos, cores, tipografia e animações
-assets/js/main.js          revelação ao rolar + medição de cliques (opcional)
-assets/fonts/              Bodoni Moda e Jost (SIL Open Font License), hospedadas localmente
-assets/img/og-image.jpg    imagem de compartilhamento (1200 × 630)
-assets/img/eventos/        fotografias dos cartões de experiências (a adicionar)
-favicon.svg / favicon-32.png / apple-touch-icon.png   ícones provisórios (monograma "D")
-tools/og-image.html        modelo para regenerar a imagem de compartilhamento
+index.html                       página completa (seções, links, metadados, ícones SVG)
+assets/css/styles.css            estilos, cores, tipografia e animações
+assets/js/main.js                revelação ao rolar + medição de cliques (opcional)
+assets/fonts/                    Bodoni Moda e Jost (SIL Open Font License), hospedadas localmente
+assets/img/logo-donna.webp       logo original (recorte do arquivo enviado, sem alterações)
+assets/img/logo-ornamento.webp   ornamento da própria logo, usado na chamada final
+assets/img/og-image.jpg          imagem de compartilhamento (1200 × 630)
+assets/img/eventos/              fotografias dos cartões de experiências (a adicionar)
+favicon-32.png, icon-192.png,
+apple-touch-icon.png             ícones feitos com o "D" da logo
+tools/og-image.html              modelo para regenerar a imagem de compartilhamento
 ```
+
+## Logo
+
+A logo usada é exatamente o arquivo enviado pela Donna: apenas a área transparente vazia ao redor foi recortada.
+Desenho, tipografia, cores e proporções estão intactos.
+
+O arquivo original tem uma sombra preta atrás das letras douradas. Para que ela não apareça como um retângulo,
+tudo o que fica atrás da logo usa preto absoluto (`--logo-backing: #000` em `styles.css`): a moldura da abertura,
+a moldura da chamada final e o rodapé. Se mudar essas cores de fundo, mantenha o preto absoluto atrás da logo.
+
+Para trocar a logo no futuro, substitua `assets/img/logo-donna.webp` mantendo o nome do arquivo
+e ajuste `width`/`height` no `index.html` se as proporções mudarem.
 
 ## Pendências antes de publicar
 
-### 1. Logo original
-
-Salve a logo em `assets/img/logo.png` (PNG com fundo transparente ou preto, cerca de 600 px de altura).
-Nenhum código precisa ser alterado: a página detecta o arquivo e passa a exibi-lo no topo e no rodapé.
-Enquanto o arquivo não existir, o nome da marca aparece em composição tipográfica.
-
-Com a logo em mãos, vale também:
-
-- substituir `favicon.svg`, `favicon-32.png` e `apple-touch-icon.png` por versões recortadas da logo
-  (o monograma "D" atual é provisório);
-- regenerar `assets/img/og-image.jpg` a partir de `tools/og-image.html` (instruções no próprio arquivo).
-
-### 2. Fotografias reais
+### 1. Fotografias reais
 
 Os cartões de **Experiências Donna** já estão preparados para receber fotos. Para cada categoria:
 
@@ -43,7 +46,7 @@ Os cartões de **Experiências Donna** já estão preparados para receber fotos.
 Use somente registros reais de eventos da Donna, com autorização de uso de imagem.
 Sem foto, o cartão mantém a composição com monograma.
 
-### 3. Domínio definitivo
+### 2. Domínio definitivo
 
 Redes sociais exigem URL absoluta na imagem de compartilhamento. Depois de definir o domínio,
 troque no `<head>` do `index.html` os caminhos `assets/img/og-image.jpg` por
@@ -90,6 +93,8 @@ Abra `http://localhost:8080`. Abrir o `index.html` direto do disco também funci
 
 ## Decisões de design
 
+- **Logo:** é o título principal da página (`<h1>` com texto alternativo "Donna Cerimonial & Eventos") e aparece também
+  no rodapé e na imagem de compartilhamento; o ornamento da logo se repete na chamada final.
 - **Conceito:** a página como um convite de casamento de luxo — moldura de borda dupla com losangos nos cantos,
   dourado aplicado como *hot stamping* (um único reflexo de luz percorre "realizamos sonhos." e, em seguida, o botão de orçamento).
 - **Tipografia:** Bodoni Moda (títulos, com itálico para as palavras em dourado) e Jost (textos e botões).
@@ -98,4 +103,5 @@ Abra `http://localhost:8080`. Abrir o `index.html` direto do disco também funci
   Tudo é desativado quando o sistema pede movimento reduzido.
 - **Acessibilidade:** HTML semântico, contraste AA em todos os textos, áreas de toque de no mínimo 44 px, foco visível,
   rótulos para leitores de tela nos links externos.
-- **Desempenho:** sem frameworks; HTML + CSS + JS somam cerca de 13 KB comprimidos, mais ~125 KB de fontes.
+- **Desempenho:** sem frameworks; HTML + CSS + JS somam cerca de 13 KB comprimidos, mais ~125 KB de fontes
+  e ~110 KB da logo (pré-carregada, pois é o primeiro elemento visto).

@@ -37,6 +37,8 @@
   --gold-light: #F5D778;
   --gold-deep: #8F671C;
   --ivory: #F5F2EA;
+  /* Preto absoluto: só atrás da logo, para que a sombra original do arquivo desapareça */
+  --logo-backing: #000;
 
   --ivory-soft: rgba(245, 242, 234, .74);
   --ivory-faint: rgba(245, 242, 234, .58);
@@ -129,9 +131,7 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
 .frame {
   position: relative;
   border: 1px solid var(--line);
-  background:
-    radial-gradient(70% 45% at 50% 0%, rgba(212, 175, 55, .09), transparent 72%),
-    linear-gradient(180deg, rgba(21, 21, 21, .92), rgba(11, 11, 11, .78));
+  background: var(--logo-backing);
 }
 
 .frame::before {
@@ -201,62 +201,26 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
   text-align: center;
 }
 
-.invite__logo {
-  height: 116px;
-  width: auto;
-  max-width: 78%;
-  margin: 0 auto 22px;
-  object-fit: contain;
-}
-
-/* Com logo: o nome vira uma linha discreta em versalete */
+/* A logo original é o título principal da página */
 .brand {
-  font-family: var(--sans);
-  font-size: 11.5px;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: .34em;
-  text-transform: uppercase;
-  color: var(--gold);
-  padding-left: .34em;
+  line-height: 0;
 }
 
-/* Sem logo: o nome assume a composição tipográfica principal */
-.invite:not(:has(.invite__logo)) .brand__name {
-  display: block;
-  margin-bottom: 12px;
-  font-family: var(--serif);
-  font-size: clamp(56px, 16vw, 84px);
-  font-weight: 400;
-  line-height: .95;
-  letter-spacing: .005em;
-  text-transform: none;
-}
-
-.invite:not(:has(.invite__logo)) .brand__kind {
-  display: block;
-  font-size: 11px;
-  letter-spacing: .4em;
+.brand__logo {
+  width: min(100%, 300px);
+  height: auto;
+  margin: 0 auto;
 }
 
 .invite__headline {
   max-width: 15ch;
-  margin: 0 auto;
+  margin: 26px auto 0;
   font-family: var(--serif);
   font-size: clamp(29px, 7.8vw, 46px);
   font-weight: 400;
   line-height: 1.14;
   letter-spacing: -.005em;
   text-wrap: balance;
-}
-
-.invite__headline::before {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 1px;
-  margin: 22px auto 22px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
 .invite__lead {
@@ -732,25 +696,18 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
 .closing__inner {
   max-width: 760px;
   margin: 0 auto;
-  padding: 56px 18px 48px;
+  padding: 52px 18px 48px;
   text-align: center;
+  /* brilho discreto atrás do título, abaixo do ornamento */
   background:
-    radial-gradient(70% 60% at 50% 38%, rgba(212, 175, 55, .10), transparent 72%),
-    var(--ink);
+    radial-gradient(70% 50% at 50% 64%, rgba(212, 175, 55, .09), transparent 72%),
+    var(--logo-backing);
 }
 
 .closing__ornament {
-  display: block;
-  width: 216px;
+  width: min(100%, 290px);
   height: auto;
-  margin: 0 auto 28px;
-  overflow: visible;
-  color: var(--gold);
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  margin: 0 auto 30px;
 }
 
 .closing__title {
@@ -821,38 +778,15 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
 .footer {
   padding: 52px var(--gutter) calc(40px + env(safe-area-inset-bottom));
   border-top: 1px solid var(--line-soft);
+  background: var(--logo-backing);
   text-align: center;
 }
 
 .footer__logo {
-  height: 72px;
-  width: auto;
-  max-width: 60%;
-  margin: 0 auto 18px;
-  object-fit: contain;
+  width: 210px;
+  height: auto;
+  margin: 0 auto 20px;
 }
-
-.footer__wordmark {
-  display: none;
-  margin-bottom: 18px;
-  color: var(--gold);
-  font-family: var(--serif);
-  font-size: 36px;
-  line-height: 1;
-}
-
-.footer__wordmark span {
-  display: block;
-  margin-top: 10px;
-  padding-left: .36em;
-  font-family: var(--sans);
-  font-size: 10.5px;
-  font-weight: 500;
-  letter-spacing: .36em;
-  text-transform: uppercase;
-}
-
-.footer:not(:has(.footer__logo)) .footer__wordmark { display: block; }
 
 .footer__place {
   display: inline-flex;
@@ -940,8 +874,7 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
 
   /* Abertura: a moldura surge, depois a marca, o texto e os botões */
   .invite             { animation: fade 1.1s var(--ease) both; }
-  .invite__logo       { animation: rise 1s var(--ease) .15s both; }
-  .brand              { animation: rise 1s var(--ease) .3s both; }
+  .brand              { animation: rise 1.1s var(--ease) .15s both; }
   .invite__headline   { animation: rise 1s var(--ease) .45s both; }
   .invite__lead       { animation: rise 1s var(--ease) .6s both; }
   .invite__place      { animation: rise 1s var(--ease) .7s both; }
@@ -978,16 +911,6 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
   .js .rule[data-reveal].is-in::before,
   .js .rule[data-reveal].is-in::after { transform: scaleX(1); }
 
-  /* Ornamento final desenhado a traço */
-  .js .closing__ornament[data-reveal] {
-    stroke-dasharray: 160;
-    stroke-dashoffset: 160;
-    transition:
-      opacity 1s var(--ease),
-      transform 1s var(--ease),
-      stroke-dashoffset 2.2s var(--ease) .15s;
-  }
-  .js .closing__ornament[data-reveal].is-in { stroke-dashoffset: 0; }
 }
 
 /* ==========================================================================
@@ -996,8 +919,8 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
 @media (max-width: 359px) {
   :root { --gutter: 14px; }
 
-  .invite { padding: 34px 16px 28px; }
-  .invite__headline { font-size: 27px; }
+  .invite { padding: 28px 16px 24px; }
+  .invite__headline { margin-top: 20px; font-size: 27px; }
   .invite__lead { font-size: 15px; }
   .invite__place { letter-spacing: .2em; }
 
@@ -1017,7 +940,7 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
   :root { --gutter: 32px; }
 
   .invite { padding: 52px 40px 40px; }
-  .invite__logo { height: 132px; }
+  .brand__logo { width: 340px; }
 
   .rule { padding-top: 72px; }
   .experiences,
@@ -1051,7 +974,7 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
   }
 
   .invite { padding: 68px 52px 56px; }
-  .invite__logo { height: 150px; }
+  .brand__logo { width: 380px; }
 
   .links__list { gap: 14px; }
   .link { min-height: 88px; padding: 18px 24px 18px 18px; gap: 18px; }
@@ -1117,7 +1040,7 @@ a { color: inherit; -webkit-tap-highlight-color: transparent; }
 
   .closing { padding: 128px var(--gutter) 136px; }
   .closing__inner { padding: 88px 64px 80px; }
-  .closing__ornament { width: 260px; }
+  .closing__ornament { width: 340px; }
 }
 
 /* ==========================================================================
