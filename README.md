@@ -3,23 +3,27 @@
 Página de bio link para o Instagram da **Donna Cerimonial & Eventos** (Glória, Vila Velha — ES).
 O objetivo principal é levar o visitante ao WhatsApp para solicitar um orçamento.
 
+**No ar:** https://donna-cerimonial.pages.dev/ (Cloudflare Pages)
+
 É um site estático, sem etapa de build e sem dependências: HTML, CSS e um pequeno arquivo JavaScript.
-Pode ser publicado em qualquer hospedagem estática (Netlify, Vercel, GitHub Pages, Cloudflare Pages ou a hospedagem atual da empresa).
+Tudo o que vai ao ar fica na pasta `public/`.
 
 ## Estrutura
 
 ```
-index.html                       página completa (seções, links, metadados, ícones SVG)
-assets/css/styles.css            estilos, cores, tipografia e animações
-assets/js/main.js                revelação ao rolar + medição de cliques (opcional)
-assets/fonts/                    Bodoni Moda e Jost (SIL Open Font License), hospedadas localmente
-assets/img/logo-donna.webp       logo original (recorte do arquivo enviado, sem alterações)
-assets/img/logo-ornamento.webp   ornamento da própria logo, usado na chamada final
-assets/img/og-image.jpg          imagem de compartilhamento (1200 × 630)
-assets/img/eventos/              fotografias dos cartões de experiências (a adicionar)
-favicon-32.png, icon-192.png,
-apple-touch-icon.png             ícones feitos com o "D" da logo
-tools/og-image.html              modelo para regenerar a imagem de compartilhamento
+public/                                 tudo o que é publicado
+  index.html                            página completa (seções, links, metadados, ícones SVG)
+  _headers                              cabeçalhos de segurança e cache do Cloudflare Pages
+  assets/css/styles.css                 estilos, cores, tipografia e animações
+  assets/js/main.js                     revelação ao rolar + medição de cliques (opcional)
+  assets/fonts/                         Bodoni Moda e Jost (SIL Open Font License), hospedadas localmente
+  assets/img/logo-donna.webp            logo original (recorte do arquivo enviado, sem alterações)
+  assets/img/logo-ornamento.webp        ornamento da própria logo, usado na chamada final
+  assets/img/og-image.jpg               imagem de compartilhamento (1200 × 630)
+  assets/img/eventos/                   fotografias reais de eventos da Donna
+  favicon-32.png, icon-192.png,
+  apple-touch-icon.png                  ícones feitos com o "D" da logo
+tools/og-image.html                     modelo para regenerar a imagem de compartilhamento (não é publicado)
 ```
 
 ## Logo
@@ -31,26 +35,47 @@ O arquivo original tem uma sombra preta atrás das letras douradas. Para que ela
 tudo o que fica atrás da logo usa preto absoluto (`--logo-backing: #000` em `styles.css`): a moldura da abertura,
 a moldura da chamada final e o rodapé. Se mudar essas cores de fundo, mantenha o preto absoluto atrás da logo.
 
-Para trocar a logo no futuro, substitua `assets/img/logo-donna.webp` mantendo o nome do arquivo
+Para trocar a logo no futuro, substitua `public/assets/img/logo-donna.webp` mantendo o nome do arquivo
 e ajuste `width`/`height` no `index.html` se as proporções mudarem.
 
-## Pendências antes de publicar
+## Fotografias
 
-### 1. Fotografias reais
+Fotos reais enviadas pela Donna, apenas recortadas para remover as bordas pretas e brancas:
 
-Os cartões de **Experiências Donna** já estão preparados para receber fotos. Para cada categoria:
+| Arquivo (`public/assets/img/eventos/`) | Onde aparece |
+| --- | --- |
+| `casamento-convidados.jpg` | cartão **Casamentos** |
+| `15-anos-decoracao.jpg` | cartão **Festas de 15 anos** |
+| `15-anos-vestido-luzes.jpg`, `15-anos-pista.jpg`, `casamento-cerimonia.jpg` | galeria "Registros de celebrações Donna" |
 
-1. salve a foto em `assets/img/eventos/` (WebP ou JPG, 1200 × 1500 px, retrato 4:5, até ~250 KB);
-2. no `index.html`, descomente o `<img>` correspondente dentro de `.moment__media` e escreva um `alt` que descreva a foto.
+As fotos recebidas têm 480 px de largura, o que fica um pouco suave em telas de alta densidade.
+Os arquivos originais da câmera/fotógrafo (1600 px ou mais) deixariam tudo mais nítido: basta substituir
+os arquivos mantendo os nomes e atualizar `width`/`height` no `index.html`.
 
-Use somente registros reais de eventos da Donna, com autorização de uso de imagem.
-Sem foto, o cartão mantém a composição com monograma.
+**Para colocar foto em outro cartão** (Aniversários, Eventos sociais, Eventos personalizados):
 
-### 2. Domínio definitivo
+1. salve a foto em `public/assets/img/eventos/` (JPG ou WebP, paisagem 3:2, idealmente 1600 × 1067 px, até ~250 KB);
+2. no `index.html`, descomente o `<img>` do cartão, ajuste o nome do arquivo e escreva um `alt` que descreva a foto;
+3. acrescente a classe `moment--photo` ao `<li>` do cartão.
 
-Redes sociais exigem URL absoluta na imagem de compartilhamento. Depois de definir o domínio,
-troque no `<head>` do `index.html` os caminhos `assets/img/og-image.jpg` por
-`https://seudominio.com.br/assets/img/og-image.jpg` e descomente a linha `canonical`.
+Para incluir mais fotos na galeria, copie um `<li class="gallery__item">` e troque imagem, `alt` e legenda.
+Use somente registros reais de eventos da Donna, com autorização de uso de imagem das pessoas fotografadas.
+
+## Publicação (Cloudflare Pages)
+
+O site está publicado no projeto **donna-cerimonial** do Cloudflare Pages: https://donna-cerimonial.pages.dev/
+
+Para publicar uma nova versão depois de alterar arquivos em `public/`:
+
+```bash
+npx wrangler pages deploy public --project-name donna-cerimonial --branch main
+```
+
+(É preciso estar autenticado no Cloudflare: `npx wrangler login`, ou a variável `CLOUDFLARE_API_TOKEN`.)
+
+**Domínio próprio:** no painel do Cloudflare, em Workers & Pages → donna-cerimonial → Custom domains,
+adicione o domínio (ex.: `donnacerimonial.com.br`). Depois, troque `https://donna-cerimonial.pages.dev`
+pelo novo endereço no `<head>` do `index.html` (canonical, og:url, og:image, twitter:image e JSON-LD) e publique novamente.
 
 ## Links
 
@@ -79,14 +104,14 @@ Nenhum rastreamento é carregado. A estrutura já está pronta:
 - `assets/js/main.js` repassa esses cliques automaticamente para `gtag()` (evento `generate_lead` nos botões de WhatsApp),
   `window.dataLayer` (Google Tag Manager) e `fbq()` (evento `Contact` do Meta Pixel), **somente se** esses scripts existirem na página.
 
-Para ativar, cole o snippet oficial no local indicado no `<head>` do `index.html`, de preferência com consentimento do visitante (LGPD).
+Para ativar, cole o snippet oficial no local indicado no `<head>` do `public/index.html`, de preferência com consentimento do visitante (LGPD).
 
 ## Testar localmente
 
 ```bash
-npx serve .
+npx serve public
 # ou
-python3 -m http.server 8080
+python3 -m http.server 8080 --directory public
 ```
 
 Abra `http://localhost:8080`. Abrir o `index.html` direto do disco também funciona, mas as fontes podem não carregar por restrições do navegador.
@@ -103,5 +128,6 @@ Abra `http://localhost:8080`. Abrir o `index.html` direto do disco também funci
   Tudo é desativado quando o sistema pede movimento reduzido.
 - **Acessibilidade:** HTML semântico, contraste AA em todos os textos, áreas de toque de no mínimo 44 px, foco visível,
   rótulos para leitores de tela nos links externos.
-- **Desempenho:** sem frameworks; HTML + CSS + JS somam cerca de 13 KB comprimidos, mais ~125 KB de fontes
-  e ~110 KB da logo (pré-carregada, pois é o primeiro elemento visto).
+- **Desempenho:** sem frameworks; HTML + CSS + JS somam cerca de 14 KB comprimidos, mais ~125 KB de fontes
+  e ~110 KB da logo (pré-carregada, pois é o primeiro elemento visto). As fotos (~155 KB no total) só carregam
+  quando o visitante se aproxima da seção.

@@ -10,24 +10,25 @@
   <meta name="format-detection" content="telephone=no">
 
   <!--
-    Ao publicar em um domínio definitivo, troque os caminhos relativos abaixo
-    por URLs absolutas (ex.: https://seudominio.com.br/assets/img/og-image.jpg)
-    e descomente a linha canonical. Redes sociais exigem URL absoluta na imagem.
+    Endereço publicado: https://donna-cerimonial.pages.dev/
+    Se a página passar a usar um domínio próprio, troque este endereço nas
+    linhas canonical, og:url, og:image, twitter:image e no JSON-LD abaixo.
   -->
-  <!-- <link rel="canonical" href="https://seudominio.com.br/"> -->
+  <link rel="canonical" href="https://donna-cerimonial.pages.dev/">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://donna-cerimonial.pages.dev/">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Donna Cerimonial &amp; Eventos">
   <meta property="og:title" content="Donna Cerimonial &amp; Eventos | Celebre seus sonhos">
   <meta property="og:description" content="Conheça a Donna Cerimonial &amp; Eventos, em Glória, Vila Velha — ES. Entre em contato, solicite seu orçamento e descubra como planejar uma celebração especial.">
-  <meta property="og:image" content="assets/img/og-image.jpg">
+  <meta property="og:image" content="https://donna-cerimonial.pages.dev/assets/img/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Donna Cerimonial &amp; Eventos — Não realizamos apenas eventos, realizamos sonhos.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Donna Cerimonial &amp; Eventos | Celebre seus sonhos">
   <meta name="twitter:description" content="Conheça a Donna Cerimonial &amp; Eventos, em Glória, Vila Velha — ES. Solicite seu orçamento e planeje uma celebração especial.">
-  <meta name="twitter:image" content="assets/img/og-image.jpg">
+  <meta name="twitter:image" content="https://donna-cerimonial.pages.dev/assets/img/og-image.jpg">
 
   <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
   <link rel="icon" href="icon-192.png" sizes="192x192" type="image/png">
@@ -46,6 +47,9 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "Donna Cerimonial & Eventos",
+    "url": "https://donna-cerimonial.pages.dev/",
+    "logo": "https://donna-cerimonial.pages.dev/assets/img/logo-donna.webp",
+    "image": "https://donna-cerimonial.pages.dev/assets/img/og-image.jpg",
     "description": "Cerimonial e eventos: casamentos, festas de 15 anos, aniversários, eventos sociais e personalizados.",
     "slogan": "Não realizamos apenas eventos, realizamos sonhos.",
     "telephone": "+55 27 99788-0077",
@@ -216,16 +220,16 @@
       </header>
 
       <!--
-        FOTOS: para exibir uma fotografia real em um cartão, coloque o arquivo em
-        assets/img/eventos/ e descomente o <img> dentro de .moment__media.
-        Formato recomendado: WebP ou JPG, 1200 × 1500 px (retrato 4:5), até ~250 KB.
+        FOTOS: cada cartão aceita uma fotografia real dentro de .moment__media
+        (arquivo em assets/img/eventos/, formato paisagem 3:2). Ao adicionar uma foto,
+        acrescente também a classe "moment--photo" ao <li>.
         Sem foto, o cartão mantém a composição tipográfica com monograma.
       -->
       <section class="moments" aria-label="Tipos de evento" tabindex="0" data-reveal-group>
         <ul class="moments__list">
-          <li class="moment moment--feature" style="--i:0">
+          <li class="moment moment--photo" style="--i:0">
             <div class="moment__media">
-              <!-- <img src="assets/img/eventos/casamentos.webp" alt="Descreva a foto real do casamento" width="1200" height="1500" loading="lazy" decoding="async"> -->
+              <img src="assets/img/eventos/casamento-convidados.jpg" alt="Cerimônia de casamento vista do altar: noivos diante do celebrante, com convidados e salão iluminado por lustres" width="429" height="294" loading="lazy" decoding="async">
             </div>
             <span class="moment__mono" aria-hidden="true">C</span>
             <div class="moment__body">
@@ -233,9 +237,9 @@
               <p class="moment__text">Do sim à última dança, cada detalhe em harmonia.</p>
             </div>
           </li>
-          <li class="moment" style="--i:1">
+          <li class="moment moment--photo" style="--i:1">
             <div class="moment__media">
-              <!-- <img src="assets/img/eventos/15-anos.webp" alt="Descreva a foto real da festa de 15 anos" width="1200" height="1500" loading="lazy" decoding="async"> -->
+              <img src="assets/img/eventos/15-anos-decoracao.jpg" alt="Debutante de vestido azul diante da decoração da festa de 15 anos, com flores azuis e cortina de luzes" width="480" height="329" loading="lazy" decoding="async" style="object-position: 64% 50%">
             </div>
             <span class="moment__mono" aria-hidden="true">XV</span>
             <div class="moment__body">
@@ -245,7 +249,7 @@
           </li>
           <li class="moment" style="--i:2">
             <div class="moment__media">
-              <!-- <img src="assets/img/eventos/aniversarios.webp" alt="Descreva a foto real do aniversário" width="1200" height="1500" loading="lazy" decoding="async"> -->
+              <!-- <img src="assets/img/eventos/aniversario.jpg" alt="Descreva a foto real do aniversário" width="1200" height="800" loading="lazy" decoding="async"> -->
             </div>
             <span class="moment__mono" aria-hidden="true">A</span>
             <div class="moment__body">
@@ -255,7 +259,7 @@
           </li>
           <li class="moment" style="--i:3">
             <div class="moment__media">
-              <!-- <img src="assets/img/eventos/eventos-sociais.webp" alt="Descreva a foto real do evento social" width="1200" height="1500" loading="lazy" decoding="async"> -->
+              <!-- <img src="assets/img/eventos/evento-social.jpg" alt="Descreva a foto real do evento social" width="1200" height="800" loading="lazy" decoding="async"> -->
             </div>
             <span class="moment__mono" aria-hidden="true">S</span>
             <div class="moment__body">
@@ -265,7 +269,7 @@
           </li>
           <li class="moment" style="--i:4">
             <div class="moment__media">
-              <!-- <img src="assets/img/eventos/personalizados.webp" alt="Descreva a foto real do evento personalizado" width="1200" height="1500" loading="lazy" decoding="async"> -->
+              <!-- <img src="assets/img/eventos/evento-personalizado.jpg" alt="Descreva a foto real do evento personalizado" width="1200" height="800" loading="lazy" decoding="async"> -->
             </div>
             <span class="moment__mono" aria-hidden="true">P</span>
             <div class="moment__body">
@@ -275,6 +279,31 @@
           </li>
         </ul>
       </section>
+
+      <!-- Galeria: registros reais de eventos da Donna -->
+      <h3 class="gallery__title" data-reveal>Registros de celebrações Donna</h3>
+      <div class="gallery" data-reveal-group>
+        <ul class="gallery__list">
+          <li class="gallery__item" style="--i:0">
+            <figure>
+              <img src="assets/img/eventos/15-anos-vestido-luzes.jpg" alt="Debutante deitada sobre o vestido azul cintilante, cercada de luzes" width="452" height="273" loading="lazy" decoding="async">
+              <figcaption>15 anos</figcaption>
+            </figure>
+          </li>
+          <li class="gallery__item" style="--i:1">
+            <figure>
+              <img src="assets/img/eventos/15-anos-pista.jpg" alt="Debutante girando o vestido azul na pista, diante da decoração com flores azuis" width="452" height="300" loading="lazy" decoding="async">
+              <figcaption>15 anos</figcaption>
+            </figure>
+          </li>
+          <li class="gallery__item" style="--i:2">
+            <figure>
+              <img src="assets/img/eventos/casamento-cerimonia.jpg" alt="Noivos diante do celebrante durante a cerimônia de casamento, com flores em primeiro plano" width="452" height="301" loading="lazy" decoding="async">
+              <figcaption>Casamento</figcaption>
+            </figure>
+          </li>
+        </ul>
+      </div>
 
       <p class="experiences__more" data-reveal>
         <a class="text-link" data-track="instagram_experiencias" href="https://www.instagram.com/donnacerimonial.eventos/" target="_blank" rel="noopener">
