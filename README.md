@@ -82,9 +82,8 @@ pelo novo endereço no `<head>` do `index.html` (canonical, og:url, og:image, tw
 | Botão | Destino |
 | --- | --- |
 | Solicitar orçamento (topo, chamada final e rodapé) | WhatsApp `+55 27 99788-0077` com mensagem pronta |
-| Conheça nosso trabalho | https://www.instagram.com/donnacerimonial.eventos/ |
-| Conheça nosso espaço | https://share.google/H26QlBT8dR2Lc7eBj |
-| Como chegar | https://share.google/H26QlBT8dR2Lc7eBj |
+| Conheça nosso trabalho (abertura e rodapé) | https://www.instagram.com/donnacerimonial.eventos/ |
+| Como chegar (abertura e rodapé) | https://share.google/H26QlBT8dR2Lc7eBj |
 
 Mensagem automática do WhatsApp:
 
